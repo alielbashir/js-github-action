@@ -1,13 +1,19 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: "Update Notion Status"
+description: "Updates the status of a Notion database entry when a pull request is created, merged, or closed"
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  notion_database_id:
+    description: "The ID of the Notion database that contains the entry for the pull request"
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  notion_auth_token:
+    description: "Your Notion API auth token"
+    required: true
+  notion_status:
+    description: "The status to set in the Notion database entry (in review, complete, or cancelled)"
+    required: true
+  branch:
+    description: "The name of the branch associated with the pull request"
+    required: true
+outputs: []
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: "node16"
+  main: "dist/index.js"
