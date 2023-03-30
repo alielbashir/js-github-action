@@ -1,5 +1,5 @@
 const core = require("@actions/core");
-const { NotionAPI } = require("notion-client");
+const { Client } = require("@notionhq/client");
 
 async function run() {
   const databaseId = core.getInput("notion_database_id");
@@ -12,7 +12,7 @@ async function run() {
 
   try {
     // Create a new Notion API client
-    const notion = new NotionAPI(authToken);
+    const notion = new Client(authToken);
 
     // Find the task with corresponding branch id
     const tasks = await notion.databases.query({
