@@ -7886,7 +7886,7 @@ async function run() {
 
   try {
     // Create a new Notion API client
-    const notion = new Client(authToken);
+    const notion = new Client({ auth: authToken });
 
     // Find the task with corresponding branch id
     const tasks = await notion.databases.query({
@@ -7912,7 +7912,7 @@ async function run() {
 
     // Update the task's status
     await notion.pages.update({
-      page_id: entry.id,
+      page_id: task.id,
       properties: { Status: { status: { name: newStatus } } },
     });
 
